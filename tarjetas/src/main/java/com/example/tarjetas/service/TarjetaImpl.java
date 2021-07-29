@@ -2,6 +2,7 @@ package com.example.tarjetas.service;
 
 import java.util.List;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 //import org.springframework.web.client.RestTemplate;
@@ -11,6 +12,7 @@ import com.example.tarjetas.entity.Tarjetas;
 
 
 @Service
+@Slf4j
 public class TarjetaImpl implements ITarjeta {
 	/*@Autowired
     private RestTemplate restTemplate;*/
@@ -21,6 +23,9 @@ public class TarjetaImpl implements ITarjeta {
 	@Override
 	public List<Tarjetas> obtenerTarjetas() {
 		// TODO Auto-generated method stub
-		return (List<Tarjetas>)tarjetaDAO.findAll();
+
+		List<Tarjetas> response = tarjetaDAO.findAll();
+		log.info("informacion recibida de bade datos {}",response.get(0).getPassion());
+		return response;
 	}
 }
